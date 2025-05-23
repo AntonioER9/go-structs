@@ -14,13 +14,6 @@ type person struct {
 }
 
 func main() {
-	// antonio := person{firstName: "Antonio", lastName: "Espinoza"}
-	// fmt.Println(antonio)
-	// var antonio person
-	// antonio.firstName = "Antonio"
-	// antonio.lastName = "Espinoza"
-	// fmt.Printf("%+v", antonio)
-
 	jim := person{
 		firstName: "Jim",
 		lastName:  "Party",
@@ -30,15 +23,14 @@ func main() {
 		},
 	}
 
-	jim.print()
-	jim.updateName("Jimmy")
+	jimPointer := &jim
+	jimPointer.updateName("Jimmy")
 	jim.print()
 
 }
 
-func (p person) updateName(firstName string) {
-	p.firstName = firstName
-	fmt.Println("Updated Name:", p.firstName)
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
 }
 
 func (p person) print() {
